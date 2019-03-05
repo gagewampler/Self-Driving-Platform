@@ -45,6 +45,16 @@ SmartDrive.command(SmartDrive.R)
 
 # Infinite loop
 
+def runforward(self):
+    try:
+        while test == 1:
+            print("Batt: " + str(SmartDrive.GetBattVoltage()))
+            SmartDrive.SmartDrive_Run_Seconds(SmartDrive.SmartDrive_Motor_Both, SmartDrive.SmartDrive_Direction_Forward, speed,
+                                      duration, SmartDrive.SmartDrive_Completion_Wait_For,
+                                       SmartDrive.SmartDrive_Next_Action_Brake)
+
+
+
 try:
  while test == 1:
     
