@@ -44,91 +44,117 @@ test = 1
 SmartDrive.command(SmartDrive.R) 
 
 # Infinite loop
+class Motor(object):
+    def __init__(self, direction):
+      self.direction = direction
 
-def runforward(self):
-    try:
-        while test == 1:
+    def run(self, direction):
+     try:
+        #while test == 1:
+            print(direction)
             print("Batt: " + str(SmartDrive.GetBattVoltage()))
+            if direction=="forward":
+                SmartDrive.SmartDrive_Run_Seconds(SmartDrive.SmartDrive_Motor_Both, SmartDrive.SmartDrive_Direction_Forward, speed,
+                                          duration, SmartDrive.SmartDrive_Completion_Wait_For,
+                                           SmartDrive.SmartDrive_Next_Action_Brake)
+            else:
+                SmartDrive.SmartDrive_Run_Seconds(SmartDrive.SmartDrive_Motor_Both, SmartDrive.SmartDrive_Direction_Reverse,
+                                              speed,
+                                              duration, SmartDrive.SmartDrive_Completion_Wait_For,
+                                              SmartDrive.SmartDrive_Next_Action_Brake)
+
+
+     except KeyboardInterrupt:
+        print('interrupted!')
+
+
+
+    def reverse(self,message):
+        try:
+            while test == 2:
+                print("Batt: " + str(SmartDrive.GetBattVoltage()))
+                SmartDrive.SmartDrive_Run_Seconds(SmartDrive.SmartDrive_Motor_Both, SmartDrive.SmartDrive_Direction_Forward,
+                                                  speed,
+                                                  duration, SmartDrive.SmartDrive_Completion_Wait_For,
+                                                  SmartDrive.SmartDrive_Next_Action_Brake)
+        except KeyboardInterrupt:
+            print('interrupted!')
+
+    def original(self):
+      try:
+        while test == 1:
+
+            # Read input battery voltage
+            print("Batt: " + str(SmartDrive.GetBattVoltage()))
+
+            # Read encoder values
+            #print "Tach1: " + str(SmartDrive.ReadTachometerPosition(SmartDrive.SmartDrive_Motor_1))
+            #print "Tach2: " + str(SmartDrive.ReadTachometerPosition(SmartDrive.SmartDrive_Motor_2))
+
+            # Run motor for an unlimited time. Uncomment the following line to run the motor for unlimited amount of time
+            #SmartDrive.SmartDrive_Run_Unlimited(SmartDrive.SmartDrive_Motor_1, SmartDrive.SmartDrive_Direction_Forward, speed)
+            #SmartDrive.SmartDrive_Run_Unlimited(SmartDrive.SmartDrive_Motor_2, SmartDrive.SmartDrive_Direction_Forward, speed)
+            #SmartDrive.SmartDrive_Run_Unlimited(SmartDrive.SmartDrive_Motor_3, SmartDrive.SmartDrive_Direction_Forward, speed)
+            #SmartDrive.SmartDrive_Run_Unlimited(SmartDrive.SmartDrive_Motor_4, SmartDrive.SmartDrive_Direction_Forward, speed)
+            time.sleep(5)
+
+            # Stops the motor. Uncomment the following line to stop the motor.
+            #SmartDrive.SmartDrive_Stop(SmartDrive.SmartDrive_Motor_2, SmartDrive.SmartDrive_Next_Action_Brake)
+
+            # Runs motor for a specific time determined by the "seconds" variable. Uncomment following line to run for specific amount of time
+
+
+        ##############Motors 3 & 4 on Left, Motors 1 & 2 on Right
+
+            #Forward 5 Seconds
             SmartDrive.SmartDrive_Run_Seconds(SmartDrive.SmartDrive_Motor_Both, SmartDrive.SmartDrive_Direction_Forward, speed,
-                                      duration, SmartDrive.SmartDrive_Completion_Wait_For,
-                                       SmartDrive.SmartDrive_Next_Action_Brake)
+                                              duration, SmartDrive.SmartDrive_Completion_Wait_For,
+                                              SmartDrive.SmartDrive_Next_Action_Brake)
+
+            # Runs motor for a specific amount of degrees determined by the "degrees" variable. Uncomment following line to run for a specific number of degrees
+
+            #Turns Left
+            #SmartDrive.SmartDrive_Run_Degrees(SmartDrive.SmartDrive_Motor_Both, SmartDrive.SmartDrive_Direction_Reverse, speed,
+            #                                 degrees, SmartDrive.SmartDrive_Completion_Wait_For,
+            #                                 SmartDrive.SmartDrive_Next_Action_Brake)
+            SmartDrive.SmartDrive_Run_Seconds(SmartDrive.SmartDrive_Motor_Both, SmartDrive.SmartDrive_Direction_Reverse, speed,
+                                              duration, SmartDrive.SmartDrive_Completion_Wait_For,
+                                              SmartDrive.SmartDrive_Next_Action_Brake)
+
+            #Forward 5 Seconds
+            SmartDrive.SmartDrive_Run_Seconds(SmartDrive.SmartDrive_Motor_Both, SmartDrive.SmartDrive_Direction_Forward, speed,
+                                              duration, SmartDrive.SmartDrive_Completion_Wait_For,
+                                              SmartDrive.SmartDrive_Next_Action_Brake)
+
+            # Backward 5 Seconds
+            SmartDrive.SmartDrive_Run_Seconds(SmartDrive.SmartDrive_Motor_Both, SmartDrive.SmartDrive_Direction_Reverse, speed,
+                                              duration, SmartDrive.SmartDrive_Completion_Wait_For,
+                                              SmartDrive.SmartDrive_Next_Action_Brake)
+
+            # Turns Right
+            #SmartDrive.SmartDrive_Run_Degrees(SmartDrive.SmartDrive_Motor_Both, SmartDrive.SmartDrive_Direction_Forward, speed,
+            #                                  degrees, SmartDrive.SmartDrive_Completion_Wait_For,
+            #                                  SmartDrive.SmartDrive_Next_Action_Brake)
+            SmartDrive.SmartDrive_Run_Seconds(SmartDrive.SmartDrive_Motor_Both, SmartDrive.SmartDrive_Direction_Forward, speed,
+                                              duration, SmartDrive.SmartDrive_Completion_Wait_For,
+                                              SmartDrive.SmartDrive_Next_Action_Brake)
+            # Backward 5 Seconds
+            SmartDrive.SmartDrive_Run_Seconds(SmartDrive.SmartDrive_Motor_Both, SmartDrive.SmartDrive_Direction_Reverse, speed,
+                                              duration, SmartDrive.SmartDrive_Completion_Wait_For,
+                                              SmartDrive.SmartDrive_Next_Action_Brake)
+
+            SmartDrive.SmartDrive_Stop(SmartDrive.SmartDrive_Motor_Both, SmartDrive.SmartDrive_Next_Action_Brake)
 
 
+            # Runs motor for a specific amount of rotations determined by the "rotations" variable. Uncomment following line to run for a specific number of rotations
+            #SmartDrive.SmartDrive_Run_Rotations(SmartDrive.SmartDrive_Motor_1, SmartDrive.SmartDrive_Direction_Reverse, speed, rotations, SmartDrive.SmartDrive_Completion_Wait_For, SmartDrive.SmartDrive_Next_Action_Brake)
 
-try:
- while test == 1:
-    
-    # Read input battery voltage
-    print("Batt: " + str(SmartDrive.GetBattVoltage()))
-    
-    # Read encoder values 
-    #print "Tach1: " + str(SmartDrive.ReadTachometerPosition(SmartDrive.SmartDrive_Motor_1))
-    #print "Tach2: " + str(SmartDrive.ReadTachometerPosition(SmartDrive.SmartDrive_Motor_2))
-    
-    # Run motor for an unlimited time. Uncomment the following line to run the motor for unlimited amount of time
-    #SmartDrive.SmartDrive_Run_Unlimited(SmartDrive.SmartDrive_Motor_1, SmartDrive.SmartDrive_Direction_Forward, speed)
-    #SmartDrive.SmartDrive_Run_Unlimited(SmartDrive.SmartDrive_Motor_2, SmartDrive.SmartDrive_Direction_Forward, speed)
-    #SmartDrive.SmartDrive_Run_Unlimited(SmartDrive.SmartDrive_Motor_3, SmartDrive.SmartDrive_Direction_Forward, speed)
-    #SmartDrive.SmartDrive_Run_Unlimited(SmartDrive.SmartDrive_Motor_4, SmartDrive.SmartDrive_Direction_Forward, speed)
-    time.sleep(5)
-    
-    # Stops the motor. Uncomment the following line to stop the motor.
-    #SmartDrive.SmartDrive_Stop(SmartDrive.SmartDrive_Motor_2, SmartDrive.SmartDrive_Next_Action_Brake)
-    
-    # Runs motor for a specific time determined by the "seconds" variable. Uncomment following line to run for specific amount of time
+            # Runs motor to a specific encoder value determined by "tacho" variable. Uncomment following line to run motor to a specific encoder value.
+            #SmartDrive.SmartDrive_Run_Tacho(SmartDrive.SmartDrive_Motor_1, speed, tacho, SmartDrive.SmartDrive_Completion_Wait_For, SmartDrive.SmartDrive_Next_Action_Brake)
+            #time.sleep(1)
 
-
-##############Motors 3 & 4 on Left, Motors 1 & 2 on Right
-
-    #Forward 5 Seconds
-    SmartDrive.SmartDrive_Run_Seconds(SmartDrive.SmartDrive_Motor_Both, SmartDrive.SmartDrive_Direction_Forward, speed,
-                                      duration, SmartDrive.SmartDrive_Completion_Wait_For,
-                                      SmartDrive.SmartDrive_Next_Action_Brake)
-
-    # Runs motor for a specific amount of degrees determined by the "degrees" variable. Uncomment following line to run for a specific number of degrees
-
-    #Turns Left
-    #SmartDrive.SmartDrive_Run_Degrees(SmartDrive.SmartDrive_Motor_Both, SmartDrive.SmartDrive_Direction_Reverse, speed,
-    #                                 degrees, SmartDrive.SmartDrive_Completion_Wait_For,
-    #                                 SmartDrive.SmartDrive_Next_Action_Brake)
-    SmartDrive.SmartDrive_Run_Seconds(SmartDrive.SmartDrive_Motor_Both, SmartDrive.SmartDrive_Direction_Reverse, speed,
-                                      duration, SmartDrive.SmartDrive_Completion_Wait_For,
-                                      SmartDrive.SmartDrive_Next_Action_Brake)
-
-    #Forward 5 Seconds
-    SmartDrive.SmartDrive_Run_Seconds(SmartDrive.SmartDrive_Motor_Both, SmartDrive.SmartDrive_Direction_Forward, speed,
-                                      duration, SmartDrive.SmartDrive_Completion_Wait_For,
-                                      SmartDrive.SmartDrive_Next_Action_Brake)
-
-    # Backward 5 Seconds
-    SmartDrive.SmartDrive_Run_Seconds(SmartDrive.SmartDrive_Motor_Both, SmartDrive.SmartDrive_Direction_Reverse, speed,
-                                      duration, SmartDrive.SmartDrive_Completion_Wait_For,
-                                      SmartDrive.SmartDrive_Next_Action_Brake)
-
-    # Turns Right
-    #SmartDrive.SmartDrive_Run_Degrees(SmartDrive.SmartDrive_Motor_Both, SmartDrive.SmartDrive_Direction_Forward, speed,
-    #                                  degrees, SmartDrive.SmartDrive_Completion_Wait_For,
-    #                                  SmartDrive.SmartDrive_Next_Action_Brake)
-    SmartDrive.SmartDrive_Run_Seconds(SmartDrive.SmartDrive_Motor_Both, SmartDrive.SmartDrive_Direction_Forward, speed,
-                                      duration, SmartDrive.SmartDrive_Completion_Wait_For,
-                                      SmartDrive.SmartDrive_Next_Action_Brake)
-    # Backward 5 Seconds
-    SmartDrive.SmartDrive_Run_Seconds(SmartDrive.SmartDrive_Motor_Both, SmartDrive.SmartDrive_Direction_Reverse, speed,
-                                      duration, SmartDrive.SmartDrive_Completion_Wait_For,
-                                      SmartDrive.SmartDrive_Next_Action_Brake)
-
-    SmartDrive.SmartDrive_Stop(SmartDrive.SmartDrive_Motor_Both, SmartDrive.SmartDrive_Next_Action_Brake)
-
-
-    # Runs motor for a specific amount of rotations determined by the "rotations" variable. Uncomment following line to run for a specific number of rotations 
-    #SmartDrive.SmartDrive_Run_Rotations(SmartDrive.SmartDrive_Motor_1, SmartDrive.SmartDrive_Direction_Reverse, speed, rotations, SmartDrive.SmartDrive_Completion_Wait_For, SmartDrive.SmartDrive_Next_Action_Brake)
-    
-    # Runs motor to a specific encoder value determined by "tacho" variable. Uncomment following line to run motor to a specific encoder value.
-    #SmartDrive.SmartDrive_Run_Tacho(SmartDrive.SmartDrive_Motor_1, speed, tacho, SmartDrive.SmartDrive_Completion_Wait_For, SmartDrive.SmartDrive_Next_Action_Brake)
-    #time.sleep(1)
-
-except KeyboardInterrupt:
-    print('interrupted!')
+      except KeyboardInterrupt:
+        print('interrupted!')
     
     
 
