@@ -53,13 +53,16 @@ class Motor(object):
         #while test == 1:
             print(direction)
 
-
+            dirarray = direction.split(':')
+            direction = dirarray[3]
 
             print("Batt: " + str(SmartDrive.GetBattVoltage()))
             if direction=="forward":
                 SmartDrive.SmartDrive_Run_Seconds(SmartDrive.SmartDrive_Motor_Both, SmartDrive.SmartDrive_Direction_Forward, speed,
                                           duration, SmartDrive.SmartDrive_Completion_Wait_For,
                                            SmartDrive.SmartDrive_Next_Action_Brake)
+            elif direction == "stop":
+                time.sleep(2)
             else:
                 SmartDrive.SmartDrive_Run_Seconds(SmartDrive.SmartDrive_Motor_Both, SmartDrive.SmartDrive_Direction_Reverse,
                                               speed,

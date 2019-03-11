@@ -38,13 +38,21 @@
 
 import rospy
 from std_msgs.msg import String
+import time
 
 def talker():
     pub = rospy.Publisher('chatter', String, queue_size=10)
     rospy.init_node('talker', anonymous=True)
     rate = rospy.Rate(10) # 10hz
+    i = 1
     while not rospy.is_shutdown():
-        hello_str = "hello world %s" % rospy.get_time()
+        #hello_str = "forward %s" % rospy.get_time()
+        i=i+1
+        time.sleep(5)
+        if i%2==0:
+          hello_str = "one:stop:two:backward"
+        else:  
+          hello_str = "one:forward:two:forward"
         rospy.loginfo(hello_str)
         pub.publish(hello_str)
         rate.sleep()
